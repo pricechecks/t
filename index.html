@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Buttons - Top 50</title>
+    <title>Instant Buttons - Top 50 Complete</title>
     <style>
         :root {
             --bg-color: #121214;
@@ -138,18 +138,17 @@
 <body>
 
     <header>
-        <h1>MyInstants Clone Pro</h1>
+        <h1>MyInstants Pro</h1>
         <div class="search-container">
             <input type="text" id="search-bar" placeholder="Search 50 unblocked sounds..." onkeyup="filterSounds()">
         </div>
     </header>
 
     <main class="soundboard-grid" id="soundboard">
-        <!-- The Javascript block automatically handles building all 50 items down below -->
+        <!-- Rendered by JS below -->
     </main>
 
     <script>
-        // Curated Top 50 Sound Index targeting open source file CDNs
         const soundData = [
             { name: "Vine Boom", file: "vine-boom.mp3", color: "btn-red" },
             { name: "Bruh Sound Effect", file: "bruh.mp3", color: "btn-blue" },
@@ -205,12 +204,11 @@
 
         const grid = document.getElementById('soundboard');
 
-        // Dynamically build all 50 sound card structures
         soundData.forEach((sound, index) => {
             const card = document.createElement('div');
             card.className = 'sound-card';
             
-            // Using a shared, filter-safe repository CDN for audio assets
+            // Audio files hosted natively on filter-safe github repository assets
             const audioSrc = `https://github.io{sound.file}`;
             
             card.innerHTML = `
@@ -226,10 +224,13 @@
             if (sound) {
                 sound.currentTime = 0;
                 sound.play().catch(err => {
-                    console.log("Interact with page first to unlock media layers.");
+                    console.log("Interaction required before playback.");
                 });
             }
         }
 
         function filterSounds() {
             const input = document.getElementById('search-bar').value.toLowerCase();
+            const cards = document.getElementsByClassName('sound-card');
+
+            for (let i = 0; i < cards.length; i++) {
